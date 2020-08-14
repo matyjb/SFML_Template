@@ -56,6 +56,7 @@ namespace SFML_Boilerplate
                     Style = Text.Styles.Bold,
                 };
                 Draw(t);
+                t.Dispose();
             }
         }
 
