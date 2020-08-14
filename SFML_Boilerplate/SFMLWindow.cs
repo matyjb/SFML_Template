@@ -32,7 +32,7 @@ namespace SFML_Boilerplate
                 DispatchEvents();
                 deltaTime = clock.Restart();
                 Update();
-                Draw();
+                Drawing();
                 Display();
             }
         }
@@ -42,9 +42,21 @@ namespace SFML_Boilerplate
 
         }
 
-        private void Draw()
+        private void Drawing()
         {
-
+            if(drawDebug)
+            {
+                string debugText = string.Format("fps: {0}", string.Format("{0:0.00}", 1f / deltaTime.AsSeconds()));
+                Text t = new Text(debugText, resources.Get(FontName.Arial))
+                {
+                    CharacterSize = 14,
+                    FillColor = Color.White,
+                    OutlineColor = Color.Black,
+                    OutlineThickness = 1,
+                    Style = Text.Styles.Bold,
+                };
+                Draw(t);
+            }
         }
 
         private void SFMLWindow_KeyPressed(object sender, KeyEventArgs e)
